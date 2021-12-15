@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Logo from './components/images/344404.png';
 import Image02 from './components/images/912633.png';
-import './App.css';
 import MainHead from './components/MainHead';
 import DoubtsArea from './components/DoubtsArea';
+import ReleasePageConfig from './components/ReleasePageConfig';
 import Data from './components/Data';
+import './App.css'
 
 /*
 function App() {
@@ -45,29 +46,57 @@ function App() {
   const Area01 = 'Text here 01';
   const Area02 = 'Text here 02';
 
+  const studentBonusNotification = () => {
+    return 'GOLDEN time! Courses 50% off.'
+  }
+
+  const sumBenefits = (benefitA, benefitB) => {
+    return benefitA + benefitB;
+  }
+
+  // Using state
+  const[age,setAge]=useState(1)
+
+  let ageValue = 32
+
+  const add01=()=>{
+    ageValue=1
+    console.log(ageValue)
+  }
+
   return (
     <>
-      <header>
+      <header className='customStyle'>
+        <ReleasePageConfig/>
         <img src={Logo} />
         <p> Paragraph test - All set!</p>
         <br />
         <p> Second paragraph test - All set!</p>
         <br />
+        <a href="https://www.youtube.com" target='_blank'>Go to YouTube!</a>
       </header>
-      <section>
+      <section className='text'> 
         <img src={Image02} />
         <p>Notification A = {specificText}</p>
         <br />
         <p>{'Notification B = ' + userMessage}</p>
         <br />
-        <img src='/BooksPile.png'></img>
       </section>
       <MainHead></MainHead>
       <DoubtsArea></DoubtsArea>
       <Data userNickname='SpeedSamurai' 
       userFullName='Alison Bernardino' 
       userCourse='Fullstack' userSemester='1'
-      extraArea001={Area01} extraArea002={Area02}></Data>
+      extraArea001={Area01} extraArea002={Area02}
+      bonusMessage={studentBonusNotification}
+      sumBenefits={sumBenefits}></Data>
+      <p> User age = {age}</p>
+
+      {/* Non functional method */}
+      <button onClick={()=>add01()}>Add +1</button>
+
+      {/* Functional method */}
+      {/* <button onClick={()=>setAge(age+1)}>Add +1</button> */}
     </>
   )
 }
