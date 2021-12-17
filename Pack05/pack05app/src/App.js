@@ -93,10 +93,10 @@ function App() {
       <p> User age = {age}</p>
 
       {/* Non functional method */}
-      <button onClick={()=>add01()}>Add +1</button>
+      {/* <button onClick={()=>add01()}>Add +1</button> */}
 
       {/* Functional method */}
-      {/* <button onClick={()=>setAge(age+1)}>Add +1</button> */}
+      <button onClick={()=>setAge(age+1)}>Add +1</button>
     </>
   )
 }
