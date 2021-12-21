@@ -3,9 +3,9 @@ import React from 'react'
 export default function StudentAvailableTime(props){
     return(
         <div>
-            <label> Morning availability {props.period}</label>
+            <label> Time availability {props.period}</label>
             <br/>
-            <input type="text" value={props.time} onChange={(timeElement)=>props.setTime(timeElement.target.value)}></input>
+            <input type="text" name={props.timeName} value={props.time} onChange={(timeElement)=>props.setTime(timeElement)}></input>
             <br/>
         </div>
     )

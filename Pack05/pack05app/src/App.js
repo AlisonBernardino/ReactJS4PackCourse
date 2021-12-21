@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from './components/images/344404.png';
 import Image02 from './components/images/912633.png';
 import MainHead from './components/MainHead';
@@ -9,6 +9,8 @@ import BlueYellowButton from './components/BlueYellowButton';
 import RedGreenLights from './components/RedGreenLed';
 import StudentAvailableTime from './components/StudentAvailableTime';
 import TotalAvailableTime from './components/TotalAvailableTime';
+import FrontEndDescription from './components/FrontEndDescription';
+import BackEndDescription from './components/BackEndDescription';
 import './App.css'
 
 function App() {
@@ -60,10 +62,17 @@ function App() {
     }
   }
 
-  // "Time availability"
-  const [morningTime,setMorningTime]=useState(0)
-  const [afternoonTime,setAfternoonTime]=useState(0)
-  const [nightTime,setNightTime]=useState(0)
+  // "Time availability" using handler
+  const [availableTime,setAvailableTime]=useState({"time1":"0","time2":"0","time3":"0"})
+  const handleAvailableTime=(timeHandlerElement)=>{
+    if(timeHandlerElement.target.getAttribute('name')=='time1'){
+      setAvailableTime({"morningTime":timeHandlerElement.target.value,"afternoonTime":availableTime.afternoonTime,"nightTime":availableTime.nightTime})
+    }else if(timeHandlerElement.target.getAttribute('name')=='time2'){
+      setAvailableTime({"morningTime":availableTime.morningTime,"afternoonTime":timeHandlerElement.target.value,"nightTime":availableTime.nightTime})
+    }else if(timeHandlerElement.target.getAttribute('name')=='time3'){
+      setAvailableTime({"morningTime":availableTime.morningTime,"afternoonTime":availableTime.afternoonTime,"nightTime":timeHandlerElement.target.value})
+    }
+  }
 
   let ageValue = 32
 
@@ -105,7 +114,7 @@ function App() {
   const changeColor = () => {
     setColor(color + 1)
     if (color > 2) {
-      setColor(1)
+      setColor(0)
     }
   }
 
@@ -136,6 +145,13 @@ function App() {
   const handleCurrentCourse=(currentCourseElement)=>{
     setCurrentCourse(currentCourseElement.target.value)
   }
+
+  // Starting "useEffect" hook use
+  const [count,setCount]=useState(0)
+  useEffect(
+    ()=>console.log("UseEffect use test - All set!")
+    
+  )
 
   return (
     <>
@@ -222,10 +238,10 @@ function App() {
       <br/>
       <input type="text" name="periodField" value={courseForm.period} onChange={(formChangeElement)=>handleCourseFormChange(formChangeElement)}/>
       <br/>
-      <StudentAvailableTime num={1} period={"(Morning)"} time={morningTime} setTime={setMorningTime}></StudentAvailableTime>
-      <StudentAvailableTime num={2} period={"(Afternoon)"} time={afternoonTime} setTime={setAfternoonTime}></StudentAvailableTime>
-      <StudentAvailableTime num={3} period={"(Night)"} time={nightTime} setTime={setNightTime}></StudentAvailableTime>
-      <TotalAvailableTime timeSum={(parseFloat(morningTime) + parseFloat(afternoonTime) + parseFloat(nightTime))}></TotalAvailableTime>
+      <StudentAvailableTime num={1} timeName={'time1'} period={"(Morning)"} time={availableTime.morningTime} setTime={handleAvailableTime}></StudentAvailableTime>
+      <StudentAvailableTime num={2} timeName={'time2'} period={"(Afternoon)"} time={availableTime.afternoonTime} setTime={handleAvailableTime}></StudentAvailableTime>
+      <StudentAvailableTime num={3} timeName={'time3'} period={"(Night)"} time={availableTime.nightTime} setTime={handleAvailableTime}></StudentAvailableTime>
+      <TotalAvailableTime timeSum={(parseFloat(availableTime.morningTime) + parseFloat(availableTime.afternoonTime) + parseFloat(availableTime.nightTime))}></TotalAvailableTime>
       <h3> Registered information: </h3>
       <h4> Personal student data </h4>
       <p> First name = {firstName}</p>
@@ -236,7 +252,25 @@ function App() {
       <h4>Course data:</h4>
       <p> Title = {courseForm.title}</p>
       <p> Institution = {courseForm.institution}</p>
-      <p> Period = {courseForm.period}</p> 
+      <p> Period = {courseForm.period}</p>
+      <br/>
+      <h1> FrontEnd description </h1>
+      <FrontEndDescription website="www.google.com.br"> 
+         {/* All the code inside these tags are considered
+         as "Children props"
+         To activate them, type "props" inside
+         the father element (In this case, 
+         FrontEndDescription.js)
+         */}
+        <p> You can Google this theme for more information!</p>
+        <p> Access this link: </p>
+      </FrontEndDescription> 
+      <br/>
+      <h1> BackEnd description </h1>
+      <BackEndDescription></BackEndDescription>
+      <p> Enjoying School Website? Please, rate us: </p>
+      <p> Stars: {count}</p>
+      <button onClick={()=>setCount(count+1)}> +1 star </button>
     </>
   )
 }
