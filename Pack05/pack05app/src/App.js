@@ -149,9 +149,27 @@ function App() {
   // Starting "useEffect" hook use
   const [count,setCount]=useState(0)
   useEffect(
-    ()=>console.log("UseEffect use test - All set!")
-    
+    ()=>console.log("UseEffect use test - All set!") 
   )
+
+  // Using localStorage - Set, Get and Remove (CRUD base)
+  // localStorage.setItem("studentPlan","Common");
+  // localStorage.getItem("studentType");
+  // localStorage.removeItem("studentType");
+  
+  const [studyPlan,setStudyPlan]=useState()
+
+  const create=(index,content)=>{
+    localStorage.setItem(index,content)
+  }
+
+  const read=(index)=>{
+    alert(localStorage.getItem(index))
+  }
+
+  const erase=(index)=>{
+    localStorage.removeItem(index)
+  }
 
   return (
     <>
@@ -238,6 +256,16 @@ function App() {
       <br/>
       <input type="text" name="periodField" value={courseForm.period} onChange={(formChangeElement)=>handleCourseFormChange(formChangeElement)}/>
       <br/>
+
+      {/* LocalStorage use */}
+      <label>Studies plan: </label>
+      <br/>
+      <input type="text" value={studyPlan} onChange={(studyPlanElement)=>setStudyPlan(studyPlanElement.target.value)}/>
+      <br/>
+      <button onClick={()=>create('localStoreData',studyPlan)}>Add</button>
+      <button onClick={()=>read('localStoreData')}>List</button>
+      <button onClick={()=>erase('localStoreData')}>Remove</button>
+
       <StudentAvailableTime num={1} timeName={'time1'} period={"(Morning)"} time={availableTime.morningTime} setTime={handleAvailableTime}></StudentAvailableTime>
       <StudentAvailableTime num={2} timeName={'time2'} period={"(Afternoon)"} time={availableTime.afternoonTime} setTime={handleAvailableTime}></StudentAvailableTime>
       <StudentAvailableTime num={3} timeName={'time3'} period={"(Night)"} time={availableTime.nightTime} setTime={handleAvailableTime}></StudentAvailableTime>
