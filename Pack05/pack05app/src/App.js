@@ -11,6 +11,8 @@ import StudentAvailableTime from './components/StudentAvailableTime';
 import TotalAvailableTime from './components/TotalAvailableTime';
 import FrontEndDescription from './components/FrontEndDescription';
 import BackEndDescription from './components/BackEndDescription';
+import CourseTopicsClass from './components/CourseTopicsClass'
+import SchoolCampus from './components/SchoolCampus'
 import './App.css'
 
 function App() {
@@ -299,6 +301,9 @@ function App() {
       <p> Enjoying School Website? Please, rate us: </p>
       <p> Stars: {count}</p>
       <button onClick={()=>setCount(count+1)}> +1 star </button>
+      <br/>
+      <CourseTopicsClass location="Main topics"></CourseTopicsClass>
+      <SchoolCampus></SchoolCampus>
     </>
   )
 }
