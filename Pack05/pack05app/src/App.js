@@ -13,6 +13,7 @@ import FrontEndDescription from './components/FrontEndDescription';
 import BackEndDescription from './components/BackEndDescription';
 import CourseTopicsClass from './components/CourseTopicsClass'
 import SchoolCampus from './components/SchoolCampus'
+import BaseComponent from './components/BaseComponent'
 import './App.css'
 
 function App() {
@@ -47,32 +48,32 @@ function App() {
   const [color, setColor] = useState(1)
 
   // "Basic form" 
-  const [firstName,setFirstName]=useState('')
-  const [lastName,setLastName]=useState('')
-  const [currentCourse,setCurrentCourse]=useState('')
-  const [gender,setGender]=useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [currentCourse, setCurrentCourse] = useState('')
+  const [gender, setGender] = useState('')
 
   // "Course" details form + React State hooks
-  const [courseForm,setCourseForm]=useState({"specifiedTitle":"","specifiedInstitution":"","specifiedPeriod":""})
-  const handleCourseFormChange=(formChangeElement)=>{
-    if(formChangeElement.target.getAttribute('name')=='titleField'){
-      setCourseForm({"title":formChangeElement.target.value,"institution":courseForm.institution,"period":courseForm.period})
-    }else if(formChangeElement.target.getAttribute('name')=='institutionField'){
-      setCourseForm({"title":courseForm.title,"institution":formChangeElement.target.value,"period":courseForm.period})
-    }else if(formChangeElement.target.getAttribute('name')=='periodField'){
-      setCourseForm({"title":courseForm.title,"institution":courseForm.institution,"period":formChangeElement.target.value})
+  const [courseForm, setCourseForm] = useState({ "specifiedTitle": "", "specifiedInstitution": "", "specifiedPeriod": "" })
+  const handleCourseFormChange = (formChangeElement) => {
+    if (formChangeElement.target.getAttribute('name') == 'titleField') {
+      setCourseForm({ "title": formChangeElement.target.value, "institution": courseForm.institution, "period": courseForm.period })
+    } else if (formChangeElement.target.getAttribute('name') == 'institutionField') {
+      setCourseForm({ "title": courseForm.title, "institution": formChangeElement.target.value, "period": courseForm.period })
+    } else if (formChangeElement.target.getAttribute('name') == 'periodField') {
+      setCourseForm({ "title": courseForm.title, "institution": courseForm.institution, "period": formChangeElement.target.value })
     }
   }
 
   // "Time availability" using handler
-  const [availableTime,setAvailableTime]=useState({"time1":"0","time2":"0","time3":"0"})
-  const handleAvailableTime=(timeHandlerElement)=>{
-    if(timeHandlerElement.target.getAttribute('name')=='time1'){
-      setAvailableTime({"morningTime":timeHandlerElement.target.value,"afternoonTime":availableTime.afternoonTime,"nightTime":availableTime.nightTime})
-    }else if(timeHandlerElement.target.getAttribute('name')=='time2'){
-      setAvailableTime({"morningTime":availableTime.morningTime,"afternoonTime":timeHandlerElement.target.value,"nightTime":availableTime.nightTime})
-    }else if(timeHandlerElement.target.getAttribute('name')=='time3'){
-      setAvailableTime({"morningTime":availableTime.morningTime,"afternoonTime":availableTime.afternoonTime,"nightTime":timeHandlerElement.target.value})
+  const [availableTime, setAvailableTime] = useState({ "time1": "0", "time2": "0", "time3": "0" })
+  const handleAvailableTime = (timeHandlerElement) => {
+    if (timeHandlerElement.target.getAttribute('name') == 'time1') {
+      setAvailableTime({ "morningTime": timeHandlerElement.target.value, "afternoonTime": availableTime.afternoonTime, "nightTime": availableTime.nightTime })
+    } else if (timeHandlerElement.target.getAttribute('name') == 'time2') {
+      setAvailableTime({ "morningTime": availableTime.morningTime, "afternoonTime": timeHandlerElement.target.value, "nightTime": availableTime.nightTime })
+    } else if (timeHandlerElement.target.getAttribute('name') == 'time3') {
+      setAvailableTime({ "morningTime": availableTime.morningTime, "afternoonTime": availableTime.afternoonTime, "nightTime": timeHandlerElement.target.value })
     }
   }
 
@@ -144,33 +145,39 @@ function App() {
   )
 
   // Handling the "Current course" data 
-  const handleCurrentCourse=(currentCourseElement)=>{
+  const handleCurrentCourse = (currentCourseElement) => {
     setCurrentCourse(currentCourseElement.target.value)
   }
 
   // Starting "useEffect" hook use
-  const [count,setCount]=useState(0)
+  const [count, setCount] = useState(0)
   useEffect(
-    ()=>console.log("UseEffect use test - All set!") 
+    () => console.log("UseEffect use test - All set!")
   )
 
   // Using localStorage - Set, Get and Remove (CRUD base)
   // localStorage.setItem("studentPlan","Common");
   // localStorage.getItem("studentType");
   // localStorage.removeItem("studentType");
-  
-  const [studyPlan,setStudyPlan]=useState()
 
-  const create=(index,content)=>{
-    localStorage.setItem(index,content)
+  const [studyPlan, setStudyPlan] = useState()
+
+  const create = (index, content) => {
+    localStorage.setItem(index, content)
   }
 
-  const read=(index)=>{
+  const read = (index) => {
     alert(localStorage.getItem(index))
   }
 
-  const erase=(index)=>{
+  const erase = (index) => {
     localStorage.removeItem(index)
+  }
+
+  // Component lifecycle - Direct use
+  const [campusData, setCampusData] = useState(true)
+  const showOrHideCampusData = () => {
+    setCampusData(!campusData)
   }
 
   return (
@@ -218,55 +225,55 @@ function App() {
       <label>
         First name:
       </label>
-      <br/>
-      <input type="text" name="firstNameField" value={firstName} onChange={(firstNameElement)=>setFirstName(firstNameElement.target.value)} />
-      <br/>
+      <br />
+      <input type="text" name="firstNameField" value={firstName} onChange={(firstNameElement) => setFirstName(firstNameElement.target.value)} />
+      <br />
       <label>
         Last name:
       </label>
-      <br/>
-      <input type="text" name="lastNameField" value={lastName} onChange={(lastNameElement)=>setLastName(lastNameElement.target.value)}/>
-      <br/>
-      <label> 
+      <br />
+      <input type="text" name="lastNameField" value={lastName} onChange={(lastNameElement) => setLastName(lastNameElement.target.value)} />
+      <br />
+      <label>
         Current course:
       </label>
-      <br/>
-      <input type="text" name="currentCourseField" value={currentCourse} onChange={(currentCourseElement)=>handleCurrentCourse(currentCourseElement)}/>
-      <br/>
+      <br />
+      <input type="text" name="currentCourseField" value={currentCourse} onChange={(currentCourseElement) => handleCurrentCourse(currentCourseElement)} />
+      <br />
       <label> Gender: </label>
-      <br/>
-      <select values={gender} onChange={(genderElement)=>setGender(genderElement.target.value)}>
+      <br />
+      <select values={gender} onChange={(genderElement) => setGender(genderElement.target.value)}>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
         <option value="Other">Other</option>
       </select>
-      <br/>
+      <br />
       <h2> Selected course data: </h2>
       <label> Title: </label>
-      <br/>
-      <input type="text" name="titleField" value={courseForm.title} onChange={(formChangeElement)=>handleCourseFormChange(formChangeElement)}/>
-      <br/>
+      <br />
+      <input type="text" name="titleField" value={courseForm.title} onChange={(formChangeElement) => handleCourseFormChange(formChangeElement)} />
+      <br />
       <label>
         Institution:
       </label>
-      <br/>
-      <input type="text" name="institutionField" value={courseForm.institution} onChange={(formChangeElement)=>handleCourseFormChange(formChangeElement)}/>
-      <br/>
+      <br />
+      <input type="text" name="institutionField" value={courseForm.institution} onChange={(formChangeElement) => handleCourseFormChange(formChangeElement)} />
+      <br />
       <label>
         Period:
       </label>
-      <br/>
-      <input type="text" name="periodField" value={courseForm.period} onChange={(formChangeElement)=>handleCourseFormChange(formChangeElement)}/>
-      <br/>
+      <br />
+      <input type="text" name="periodField" value={courseForm.period} onChange={(formChangeElement) => handleCourseFormChange(formChangeElement)} />
+      <br />
 
       {/* LocalStorage use */}
       <label>Studies plan: </label>
-      <br/>
-      <input type="text" value={studyPlan} onChange={(studyPlanElement)=>setStudyPlan(studyPlanElement.target.value)}/>
-      <br/>
-      <button onClick={()=>create('localStoreData',studyPlan)}>Add</button>
-      <button onClick={()=>read('localStoreData')}>List</button>
-      <button onClick={()=>erase('localStoreData')}>Remove</button>
+      <br />
+      <input type="text" value={studyPlan} onChange={(studyPlanElement) => setStudyPlan(studyPlanElement.target.value)} />
+      <br />
+      <button onClick={() => create('localStoreData', studyPlan)}>Add</button>
+      <button onClick={() => read('localStoreData')}>List</button>
+      <button onClick={() => erase('localStoreData')}>Remove</button>
 
       <StudentAvailableTime num={1} timeName={'time1'} period={"(Morning)"} time={availableTime.morningTime} setTime={handleAvailableTime}></StudentAvailableTime>
       <StudentAvailableTime num={2} timeName={'time2'} period={"(Afternoon)"} time={availableTime.afternoonTime} setTime={handleAvailableTime}></StudentAvailableTime>
@@ -278,15 +285,15 @@ function App() {
       <p> Last name = {lastName}</p>
       <p> Current course = {currentCourse}</p>
       <p> Gender = {gender}</p>
-      <br/>
+      <br />
       <h4>Course data:</h4>
       <p> Title = {courseForm.title}</p>
       <p> Institution = {courseForm.institution}</p>
       <p> Period = {courseForm.period}</p>
-      <br/>
+      <br />
       <h1> FrontEnd description </h1>
-      <FrontEndDescription website="www.google.com.br"> 
-         {/* All the code inside these tags are considered
+      <FrontEndDescription website="www.google.com.br">
+        {/* All the code inside these tags are considered
          as "Children props"
          To activate them, type "props" inside
          the father element (In this case, 
@@ -294,16 +301,21 @@ function App() {
          */}
         <p> You can Google this theme for more information!</p>
         <p> Access this link: </p>
-      </FrontEndDescription> 
-      <br/>
+      </FrontEndDescription>
+      <br />
       <h1> BackEnd description </h1>
       <BackEndDescription></BackEndDescription>
       <p> Enjoying School Website? Please, rate us: </p>
       <p> Stars: {count}</p>
-      <button onClick={()=>setCount(count+1)}> +1 star </button>
-      <br/>
+      <button onClick={() => setCount(count + 1)}> +1 star </button>
+      <br />
       <CourseTopicsClass location="Main topics"></CourseTopicsClass>
-      <SchoolCampus></SchoolCampus>
+      {campusData ?
+        <SchoolCampus valueFactor={2}></SchoolCampus> : ''}
+      <br />
+      <button onClick={() => showOrHideCampusData()}>Remove</button>
+      <br />
+      <BaseComponent></BaseComponent>
     </>
   )
 }

@@ -11,22 +11,56 @@ export default class SchoolCampus extends React.Component {
             visitCost: 30,
             campusCode: "A01",
         }
+        this.visitStatusChangerBinding = this.changeVisitStatus.bind(this)
     }
 
     changeVisitStatus() {
-        if (this.state.isAvailableToVisit == true) {
-            this.state.isAvailableToVisit = false;
-        }else{
-            this.state.isAvailableToVisit = true;
+        this.setState({ isAvailableToVisit: !this.state.isAvailableToVisit })
+    }
+
+    // Handling "State" hook inside class components 
+    changeStudyStatus() {
+        this.setState(
+            (state)=>(
+                {isAvailableToStudy:!state.isAvailableToStudy}
+            )
+        )
+    }
+
+    increaseVisitTax(){
+        this.setState(
+            (state,props)=>(
+                {visitCost:state.visitCost + props.valueFactor}
+            )
+        )
+    }
+
+    reduceVisitTax(){
+        this.setState(
+            (state)=>(
+                {visitCost:state.visitCost-2}
+            )
+        )
+        if(this.state.visitCost < 0){
+            this.setState(
+                (state)=>{
+                    {state.visitCost = 0}
+                }
+            )
         }
     }
 
-    changeStudyStatus() {
-        if(this.state.isAvailableToStudy == true){
-            this.state.isAvailableToStudy = false;
-        }else{
-            this.state.isAvailableToStudy = true;
-        }
+    // Components lifecycle
+    componentDidMount(){
+        console.log('Creation test - All set!')
+    }
+
+    componentDidUpdate(){
+        console.log('Update test - All set!')
+    }
+
+    componentDidUnmount(){
+        console.log('Removal test - All set!')
     }
 
     render() {
@@ -36,12 +70,24 @@ export default class SchoolCampus extends React.Component {
                 <p> Name: {this.campusName}</p>
                 <p> Code: {this.state.campusCode}</p>
                 <p> Is availabe to visit? Answer = {this.state.isAvailableToVisit ? 'Yes' : 'No'}</p>
-                <p> Is availabe to study? Answer = {this.state.isAvailableToStudy ? 'Yes' : 'No'}</p>
+                <p> Is availabe for studies? Answer = {this.state.isAvailableToStudy ? 'Yes' : 'No'}</p>
                 <p> Visit cost = US${this.state.visitCost} dollars</p>
+                <h4> Administration controls: </h4>
+                <h5> To control campus access: </h5>
+                <button onClick={this.visitStatusChangerBinding}>{this.state.isAvailableToVisit ? 'Turn OFF for visits' : 'Turn ON for visits'}</button>
+                <br />
+                <button onClick={() => this.changeStudyStatus()}>{this.state.isAvailableToStudy ? 'Turn OFF for studies' : 'Turn ON for studies'}</button>
                 <br/>
-                <p> Administration controls: </p>
+                <h5> To control visit tax: </h5>
+                <button onClick={() => this.increaseVisitTax()}>
+                    Add +US$2,00
+                </button>
                 <br/>
-                
+                <button onClick={() => this.reduceVisitTax()}>
+                    Remove -US$2,00
+                </button>
+                <br/>
+                <p> Component data removal button</p>
             </div>
         )
     }
