@@ -49,7 +49,7 @@ export default class BaseComponent extends React.Component{
                 <button onClick={this.activationLever}>Turn ON/OFF</button>
 
                 {/* Using the button without binding */}
-                <button onClick={()=>this.activateOrDeactivateCourse}>Turn ON/OFF</button>
+                {/* <button onClick={()=>this.activateOrDeactivateCourse}>Turn ON/OFF</button> */}
             </>
         )
     }

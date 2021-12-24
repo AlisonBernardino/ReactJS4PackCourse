@@ -14,6 +14,8 @@ import BackEndDescription from './components/BackEndDescription';
 import CourseTopicsClass from './components/CourseTopicsClass'
 import SchoolCampus from './components/SchoolCampus'
 import BaseComponent from './components/BaseComponent'
+import GlobalNotations from './components/GlobalNotations'
+import InformativeClass from './components/InformativeClass'
 import './App.css'
 
 function App() {
@@ -189,19 +191,21 @@ function App() {
         <img src={Logo} />
         <h1 style={pickAColor(color)}> Ideas Factory </h1>
         <button onClick={() => changeColor()}>Change color</button>
-        <br />
         <p> Second paragraph test - All set!</p>
         <br />
         <a href="https://www.youtube.com" target='_blank'>Go to YouTube!</a>
       </header>
       <section className='text'>
+        <hr />
         <img src={Image02} />
         <p>Notification A = {specificText}</p>
         <br />
         <p>{'Notification B = ' + userMessage}</p>
         <br />
       </section>
+      <hr />
       <MainHead></MainHead>
+      <hr />
       <DoubtsArea></DoubtsArea>
       <Data userNickname='SpeedSamurai'
         userFullName='Alison Bernardino'
@@ -216,11 +220,14 @@ function App() {
 
       {/* Functional method */}
       <button onClick={() => setAge(age + 1)}>Add +1</button>
+      <hr />
       <BlueYellowButton turnedOn={turnedOn} setTurnedOn={setTurnedOn}></BlueYellowButton>
+      <br />
       <a href="http://google.com" target='_blank' onClick={(execution) => cancelOperation(execution)}> Search on Google...</a>
+      <hr />
       <ul>{coursesList}</ul>
       <ul>{certificationDetailsList}</ul>
-
+      <hr />
       <h2> Basic student data </h2>
       <label>
         First name:
@@ -265,7 +272,6 @@ function App() {
       <br />
       <input type="text" name="periodField" value={courseForm.period} onChange={(formChangeElement) => handleCourseFormChange(formChangeElement)} />
       <br />
-
       {/* LocalStorage use */}
       <label>Studies plan: </label>
       <br />
@@ -279,6 +285,7 @@ function App() {
       <StudentAvailableTime num={2} timeName={'time2'} period={"(Afternoon)"} time={availableTime.afternoonTime} setTime={handleAvailableTime}></StudentAvailableTime>
       <StudentAvailableTime num={3} timeName={'time3'} period={"(Night)"} time={availableTime.nightTime} setTime={handleAvailableTime}></StudentAvailableTime>
       <TotalAvailableTime timeSum={(parseFloat(availableTime.morningTime) + parseFloat(availableTime.afternoonTime) + parseFloat(availableTime.nightTime))}></TotalAvailableTime>
+      <hr/>
       <h3> Registered information: </h3>
       <h4> Personal student data </h4>
       <p> First name = {firstName}</p>
@@ -291,6 +298,7 @@ function App() {
       <p> Institution = {courseForm.institution}</p>
       <p> Period = {courseForm.period}</p>
       <br />
+      <hr/>
       <h1> FrontEnd description </h1>
       <FrontEndDescription website="www.google.com.br">
         {/* All the code inside these tags are considered
@@ -303,19 +311,25 @@ function App() {
         <p> Access this link: </p>
       </FrontEndDescription>
       <br />
+      <hr/>
       <h1> BackEnd description </h1>
       <BackEndDescription></BackEndDescription>
       <p> Enjoying School Website? Please, rate us: </p>
       <p> Stars: {count}</p>
       <button onClick={() => setCount(count + 1)}> +1 star </button>
       <br />
+      <hr/>
       <CourseTopicsClass location="Main topics"></CourseTopicsClass>
       {campusData ?
         <SchoolCampus valueFactor={2}></SchoolCampus> : ''}
       <br />
-      <button onClick={() => showOrHideCampusData()}>Remove</button>
+      <button onClick={() => showOrHideCampusData()}>Show/Hide campus data</button>
       <br />
+      <hr/>
       <BaseComponent></BaseComponent>
+      <br />
+      <hr/>
+      <InformativeClass></InformativeClass>
     </>
   )
 }
