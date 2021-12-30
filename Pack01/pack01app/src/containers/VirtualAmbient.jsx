@@ -1,31 +1,20 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { listOwners } from '../API/DataHandling'
 import InteractionItem from '../components/InteractionItem'
 
-class VirtualAmbient extends Component {
-    constructor(props) {
-        super(props);
+function VirtualAmbient() {
+    const [data, setData] = useState([]);
 
-        this.state = {
-            data: []
-        }
-    }
+    useEffect(() => {
+        listOwners()
+            .then(data => {
+                setData(data);
+            });
+    }, []);
 
-    componentDidMount() {
-        listOwners().then(data => {
-            this.setState({ data })
-        })
-    }
-
-    render() {
-        const { data } = this.state
-
-        return (
-            <ul>
-                {data.map(item => <InteractionItem key={item.id} {...item} />)}
-            </ul>
-        )
-    }
-}
-
-export default VirtualAmbient;
+    return (
+        <ul>
+            {data.map(item => <InteractionItem key={item.id} {...item} />)}
+        </ul>
+    )
+};
