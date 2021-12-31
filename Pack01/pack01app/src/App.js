@@ -1,6 +1,7 @@
 // App.js file using hooks
 import React from 'react';
 import VirtualAmbient from './containers/VirtualAmbientWithoutHooks';
+import DataEnvironment from './containers/DataEnvironment';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +18,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" component={VirtualAmbient} />
+          <Route path="/repos/:owner/:name" component={VirtualAmbient} />
         </Routes>
       </div>
     </Router>
