@@ -26,6 +26,7 @@ function App (props){
       <CandyShopHeader/>
       <CandyShopArticle/>
       <CandyShopFooter/>
+      <Button color="success">Ok</Button>
     </div>
   )
 }
