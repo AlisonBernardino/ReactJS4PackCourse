@@ -2,40 +2,76 @@
 <!-- Block 01 (Step 01) - HTML file created -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM Interactions</title>
 </head>
+
 <body>
     <!-- Block 04 - Lets create the JS interaction 
     <!-- elements inside the HTML page -->
-    
+
     <!-- Block 05A -->
     <!-- GetElementByID -->
-    <p id="showcase"></p>
-
+    <div>
+        <h3>GetElementByID</h3>
+        <p id="showcase"></p>
+    </div>
     <!-- Block 06A -->
     <!-- GetElementsByTagName -->
-    <p class="tagNameSample"></p>
-    <p class="tagNameSample"></p>
-    <p class="tagNameSample"></p>
-    <p class="tagNameSample"></p>
+    <div>
+        <h3>GetElementsByTagName</h3>
+        <p class="tagNameSample"></p>
+        <p class="tagNameSample"></p>
+        <p class="tagNameSample"></p>
+        <p class="tagNameSample"></p>
+    </div>
 
     <!-- Block 07A -->
     <!-- GetElementsByClassName -->
-    <p class="classNameExample"></p>
-    <p class="classNameExample"></p>
-    <p class="classNameExample"></p>
+    <div>
+        <h3>GetElementsByClassName</h3>
+        <p class="classNameExample"></p>
+        <p class="classNameExample"></p>
+        <p class="classNameExample"></p>
+    </div>
 
     <!-- Block 08A -->
     <!-- QuerySelectorAll -->
-    <p class="querySelectorSample"></p>
-    <p class="querySelectorSample"></p>
-    <p class="querySelectorSample"></p>
+    <div>
+        <h3>QuerySelectorAll</h3>
+        <p class="querySelectorSample"></p>
+        <p class="querySelectorSample"></p>
+        <p class="querySelectorSample"></p>
+    </div>
+    <hr>
+
+    <!-- Block 09A -->
+    <!-- QuerySelector + Value -->
+    <div>
+        <h3>QuerySelector + Value</h3>
+        <input type="text" placeholder="Insert your data here..." id="querySelectorInfo">
+        <button onClick="captureText()">Capture and show</button>
+        <hr>
+    </div>
+
+    <!-- BLock 10A -->
+    <!-- InnerHTML -->
+    <input type="text" placeholder="Field 02 data goes here..." id="innerHTMLInfo">
+    <button onClick="insertDataIntoHTML()">Add to HTML</button>
+    <div id="outputData"></div>
+
+    <!-- Block 11A -->
+    <!-- textContent -->
+    <h3>TextContent</h3>
+    <h4></h4>
 
     <!-- Block 02 - JS file reference inserted -->
-    <script type="text/javascript" src="F:\codingAndUniversityFiles\ReactJSProjects\ReactJS4PackCourse\Pack02\pack02App\src\JSContent\DOMManipulation.js"></script>
+    <script type="text/javascript"
+        src="F:\codingAndUniversityFiles\ReactJSProjects\ReactJS4PackCourse\Pack02\pack02App\src\JSContent\DOMManipulation.js"></script>
 </body>
+
 </html>

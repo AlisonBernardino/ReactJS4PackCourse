@@ -27,15 +27,37 @@ classNameElementsArray[1].innerText = 'ClassName text 02';
 classNameElementsArray[2].innerText = 'ClassName text 03';
 
 // Block 08B
-// => QuerySelector
+// => QuerySelectorAll
 var querySelectorElements = document.querySelectorAll('p.querySelectorSample');
 console.log(querySelectorElements);
 querySelectorElements[0].innerText = 'QuerySelector sample 01';
 querySelectorElements[1].innerText = 'QuerySelector sample 02';
 querySelectorElements[2].innerText = 'QuerySelector sample 03';
 
+// Block 09B 
+// => QuerySelector + Value
+function captureText(){
+    var capturedData = document.querySelector('#querySelectorInfo').value;
+
+    alert(capturedData);
+}
+
+// Block 10B
 // => InnerHTML
+function insertDataIntoHTML(){
+    var innerHTMLData = document.querySelector('#innerHTMLInfo').value;
+
+    document.querySelector('#outputData').innerHTML = innerHTMLData;
+}
+
+// Block 11B
 // => textContent
-// => Value
+var titleElement = document.querySelector("h4");
+var outputText = document.createTextNode("Text node sample text");
+
+titleElement.appendChild(outputText);
+
+titleElement.textContent = "New text inserted successfully!";
+
 
 
