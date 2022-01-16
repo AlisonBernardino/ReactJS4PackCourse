@@ -53,9 +53,15 @@ function insertDataIntoHTML(){
 // Block 11B
 // => textContent
 var titleElement = document.querySelector("h4");
+
+// TextNode = Function to create a text point with specified text data.
 var outputText = document.createTextNode("Text node sample text");
 
+// appendChild = This function inserts a new "child/inferior" element inside
+// the "father/superior" element,
+// and the function supports the DOM element creation.
 titleElement.appendChild(outputText);
+
 
 titleElement.textContent = "New text inserted successfully!";
 
