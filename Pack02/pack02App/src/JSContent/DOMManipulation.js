@@ -69,7 +69,7 @@ var outputText = document.createTextNode("Text node sample text");
 
 // appendChild = This function inserts a new "child/inferior" element inside
 // the "father/superior" element,
-// and the function supports the DOM element creation.
+// and the function complements the DOM element creation.
 titleElement.appendChild(outputText);
 
 titleElement.textContent = "New text inserted successfully!";
@@ -86,7 +86,6 @@ document.getElementById("getButton").addEventListener("click", function(){
     var capturedValue = document.getElementById("attributeHandlingTitle").getAttribute("class");
     document.getElementById("attributeHandlingClass").innerHTML = capturedValue;
 });
-
 
 // removeAttribute
 document.getElementById("removeButton").addEventListener("click", function(){
