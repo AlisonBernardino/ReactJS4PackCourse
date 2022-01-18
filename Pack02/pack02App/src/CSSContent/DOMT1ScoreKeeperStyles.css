@@ -1,0 +1,23 @@
+.content{
+    text-align: center;
+    margin-right: 30%;
+    margin-left: 35%;
+    margin-top: 25%;
+    color: rgb(48, 166, 245);
+    background-color: rgb(241, 241, 241);
+    opacity: 70%;
+}
+
+.green{
+    color: rgb(0, 0, 0);
+}
+
+body{
+    background-image: url("https://i.pinimg.com/originals/da/f8/ba/daf8ba92bb0d0da20caeb50ce391f866.jpg");
+    background-size: cover;
+    /* opacity: 65%; */
+}
+
+html{
+    height: 100%;
+}

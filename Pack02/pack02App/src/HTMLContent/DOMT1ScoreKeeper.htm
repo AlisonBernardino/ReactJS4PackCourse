@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Score Keeper </title>
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Developer custom styles -->
+    <link rel="stylesheet"
+        href="F:\codingAndUniversityFiles\ReactJSProjects\ReactJS4PackCourse\Pack02\pack02App\src\CSSContent\DOMT1ScoreKeeperStyles.css" />
 </head>
+
 <body>
-    <h1><strong> ScoreKeeper </strong></h1>
+    <div class='content'>
+        <h1><strong> ScoreKeeper </strong></h1>
 
-    <h3><big> Score: </big><span id='score01'> 0 </span> de <span id='score02'> 0 </span>
+        <h3><big> Score: </big><span id='score01'> 0 </span> de <span id='score02'> 0 </span>
+            <div class='form-group'>
+                <button type='submit' class="btn btn-default" id='controlButtonA'> Jogador 01 </button>
+                <button type='submit' class="btn btn-default" id='controlButtonB'> Jogador 02 </button>
+                <button class='btn btn-danger' id='reset'> Reset </button>
+            </div>
+            <input type="numberValues" name="totalLimit" value='6' id='limitInput'> 
 
-        <button type='submit'> Jogador 01 </button>
-        <button type='submit'> Jogador 02 </button>
-        <button> Reset </button>
+            <h3> O vencedor é: <span id="winner"></span></h3>
+    </div>
 
-        <input type="numberValues" name="totalLimit" value = '6'>
-
-        <h3> O vencedor é: <span></span></h3>
+    <!-- JS configuration reference -->
+    <script type="text/javascript" src="F:\codingAndUniversityFiles\ReactJSProjects\ReactJS4PackCourse\Pack02\pack02App\src\JSContent\DOMT1ScoreKeeperSettings.js"></script>
 </body>
+
 </html>
